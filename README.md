@@ -1,6 +1,6 @@
 ## A ChatGPT-esque Powered AI Chatbot Template (Powered by GPT-3) ##
 The intent of this template is to serve as a reference guide for fellow developers 
-looking to build and / or monetize AI GPT-3 chatbots on Web and Native Android.
+looking to build and / or monetize AI GPT-3 chatbots on Web and Mobile.
 
 ## Live Web Demo ##
 ![figure](images/img.png)
