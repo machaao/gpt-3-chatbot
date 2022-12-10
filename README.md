@@ -20,8 +20,8 @@ nano -w .env
 ```
 
 ## Get MessengerX.io API Key ##
-* Get your FREE Developer API Token via [MessengerX.io](https://portal.messengerx.io) 
-  or by [emailing us](mailto:connect@machaao.com) and replace it in the ```.env``` file under the entry ```API_TOKEN```
+* 
+* Signup via [MessengerX.io](https://portal.messengerx.io) and get a free bot token and replace it in the ```.env``` file under the entry ```API_TOKEN```
 * MessengerX.io allows you to build and integrate a custom chatbot in your website or app
 
 
