@@ -128,8 +128,8 @@ Update your bot Webhook URL at [MessengerX.io Portal](https://portal.messengerx.
 Webhook Url: <YOUR-HEROKU-APP-URL>/webhooks/machaao/incoming
 ```
 
-### Test your bot:
-Visit: ```https://messengerx.io/<your-character-name>```
+### Share your bot:
+Visit: ```https://messengerx.io/<your-bot-name>```
 
 
 ## Notes / Additional Resources ##
