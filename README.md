@@ -20,7 +20,7 @@ nano -w .env
 ```
 ```
 API_TOKEN = <Machaao API Token>
-OPEN_AI_KEY = <OpenAI Key> 
+OPENAI_API_KEY = <OpenAI Key> 
 BASE_URL = <Machaao Base Url> ex: https://ganglia.machaao.com
 NAME = <Your Bot Display Name> ex: Jess
 DASHBOT_KEY = <Your dashbot token> (Optional) (Conversational Analytics)
