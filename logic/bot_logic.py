@@ -28,6 +28,7 @@ def send(url, headers, payload=None):
 
     return response
 
+
 # don't change for sanity purposes
 def get_details(api_token, base_url):
     _cache_ts_param = str(datetime.now().timestamp())

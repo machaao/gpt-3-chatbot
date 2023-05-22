@@ -146,7 +146,7 @@ def send_to_dashbot(text, user_id, msg_type):
 def root():
     return "ok"
 
-
+@app.route("/machaao/hook", methods=["GET", "POST"])
 @app.route("/webhooks/machaao/incoming", methods=["GET", "POST"])
 def receive():
     return process_response(request)
