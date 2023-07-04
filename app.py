@@ -14,12 +14,12 @@ from logic.bot_logic import BotLogic
 # helpers
 from utils import get_base_message, get_quick_reply
 
+load_dotenv()
+
 # constants
 from config import api_token, open_api_key, base_url, dashbot_key, dashbot_url, port
 
 app = Flask(__name__)
-
-load_dotenv()
 
 params = [api_token, base_url, open_api_key]
 
@@ -33,9 +33,6 @@ if not error:
     machaao = Machaao(api_token, base_url)
 else:
     print(error)
-
-# api_token = bot_params["API_TOKEN"]
-# base_url = bot_params["BASE_URL"]
 
 logic = BotLogic()
 
@@ -52,7 +49,7 @@ def exception_handler(exception):
 
 def extract_sender(req):
     try:
-        return req.headers["user_id"]
+        return req.headers["machaao-user-id"]
     except Exception as e:
         exception_handler(e)
 
@@ -72,10 +69,10 @@ def send_reply(valid: bool, text: str, user_id: str, client: str, sdk: float):
             ]
 
         if (
-            msg
-            and msg["message"]
-            and msg["message"]["quick_replies"]
-            and client != "web"
+                msg
+                and msg["message"]
+                and msg["message"]["quick_replies"]
+                and client != "web"
         ):
             msg["message"]["quick_replies"].append(
                 get_quick_reply("text", "balance", "Balance")
@@ -146,6 +143,7 @@ def send_to_dashbot(text, user_id, msg_type):
 def root():
     return "ok"
 
+
 @app.route("/machaao/hook", methods=["GET", "POST"])
 @app.route("/webhooks/machaao/incoming", methods=["GET", "POST"])
 def receive():
@@ -153,7 +151,7 @@ def receive():
 
 
 def process_response(request):
-    _api_token = request.headers["api_token"]
+    _api_token = request.headers["bot-token"]
     sender_id = extract_sender(request)
     recv_text, label, client, sdk, action_type = extract_message(request)
 
@@ -170,4 +168,4 @@ def process_response(request):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=port)
+    app.run(host="0.0.0.0", debug=True, port=port)

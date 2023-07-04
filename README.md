@@ -11,7 +11,7 @@ looking to build and / or monetize AI GPT-3 chatbots on Web and Mobile.
 * Windows / Mac / Linux with Git installed
 * Python 3.5+
 * MessengerX.io API Token
-* GPT-3 Token
+* OpenAI API Key
 * Ngrok for Tunneling
 
 ### Create a new .env file in the base directory ###
@@ -36,7 +36,7 @@ DASHBOT_KEY = <Your dashbot token> (Optional) (Conversational Analytics)
 * You can acquire the API Key via [Open AI](https://openai.com) and replace it in the ```.env``` file under the entry
 ```OPEN_AI_KEY```
   
-## Get Dashbot.io API KEY (Recommended for Production) ##
+## Get Dashbot.io API KEY (Recommended for Production) (Optional) ##
 * You can acquire the API Key via [Dashbot.io](https://dashbot.io) and replace it in the ```.env``` file under the entry
 ```DASHBOT_KEY```
   
@@ -78,13 +78,10 @@ ngrok http 5000
 ```
 
 ### Update your webhook ###
-Update your bot Webhook URL at [MessengerX.io Portal](https://portal.messengerx.io) with the url provided as shown below to continue development
-```
-Webhook Url: https://<TUNNEL-HOST>/webhooks/machaao/incoming
-```
+Update your bot Webhook URL at [MessengerX.io Portal](https://portal.messengerx.io) 
 If you use [Ngrok.io](https://ngrok.io), your webhook URL would be of the format as in the example below
 ```
-https://1234-115-187-40-104.ngrok.io/webhooks/machaao/incoming 
+https://<NGROK-HOST-URL>/machaao/hook
 ```
 ![figure](images/mx_screenshot.png)
 
