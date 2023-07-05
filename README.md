@@ -1,11 +1,11 @@
 ## A ChatGPT-esque Powered AI Chatbot Template ##
 The intent of this template is to serve as a reference guide for fellow developers 
-looking to build and / or monetize AI GPT-3 / GPT-4 chatbots on Web and Mobile.
+looking to build, grow and monetize AI GPT-3 / GPT-4 chatbots on Web and Mobile.
 
 ## Live Web Demo ##
 ![figure](images/img.png)
 
-[Jeanie](https://messengerx.io/jeanie) is an AI powered virtual girlfriend based on the above code
+[Jeanie](https://messengerx.io/jeanie) is an AI powered virtual girlfriend based on a version of the above code
 
 ## Requirements for running it locally on laptop ##
 * Windows / Mac / Linux with Git installed
@@ -55,9 +55,9 @@ This is a discussion between [user] and [name]
 [name] is a very understanding girl.
 ```
 
-### Modify the core() function in logic/bot_logic.py to personalize responses ###
+### Modify the core() function in logic/bot_logic.py to modify logic ###
 ```
-def core(self, req: str, user_id: str):
+    def core(self, req: str, label: str, user_id: str, client: str, sdk: str, action_type: str, api_token: str):
 ```
 * Refer to [platform documentation](https://messengerx.rtfd.iio) for messaging payloads
 
@@ -122,5 +122,3 @@ Visit: ```https://messengerx.io/<your-bot-name>```
 ## Notes / Additional Resources ##
 * Please note that this document isn't meant to be used as a guide for production environment setup.
 * Please note to get a downloadable APK for your character, please contact us at [connect@machaao.com](mailto:connect@machaao.com)
-
-[![Gitter](https://badges.gitter.im/messengerx-io/community.svg)](https://gitter.im/messengerx-io/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)  
