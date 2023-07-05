@@ -1,10 +1,7 @@
 import base64
 from datetime import datetime
 import json
-import nlpcloud
-import nltk
 import requests
-from nltk import word_tokenize
 from requests.structures import CaseInsensitiveDict
 from dotenv import load_dotenv
 import os
@@ -15,7 +12,7 @@ ban_words = ["nigger", "negro", "nazi", "faggot", "murder", "suicide"]
 # list of banned input words
 c = 'UTF-8'
 openai.api_key = os.environ.get("OPENAI_API_KEY", None)
-model = os.environ.get("OPENAI_MODEL", "text-davinci-003")
+model = os.environ.get("OPENAI_MODEL", "gpt-3.5-turbo")
 
 
 def send(url, headers, payload=None):
@@ -72,7 +69,6 @@ class BotLogic:
         self.base_url = os.environ.get("BASE_URL", "https://ganglia.machaao.com")
         self.name = os.environ.get("NAME")
         self.limit = os.environ.get("LIMIT", 'True')
-        self.prefix = self.read_prompt(self.name)
 
         # Bot config
         self.top_p = os.environ.get("TOP_P", 1.0)
@@ -174,32 +170,25 @@ class BotLogic:
 
         bot = get_details(api_token, self.base_url)
         name = self.name
-        _prompt = self.prefix
 
         if not bot:
             return False, "Oops, the chat bot doesn't exist or is not active at the moment"
         else:
             name = bot.get("displayName", name)
 
-        if _prompt:
-            _prompt = _prompt.replace("name]", f"{name}]")
-
+        _prompt = self.read_prompt(name)
         valid = True
-
-        # intents = ["default", "balance"]
 
         recent_text_data = self.get_recent(user_id)
         recent_convo_length = len(recent_text_data)
 
         print(f"len of history: {recent_convo_length}")
 
-        # text = word_tokenize(req)
-        # tags = nltk.pos_tag(text)
-        # print(f"tags: {tags}")
-
-        history = _prompt + "\n"
-
         banned = any(ele in req for ele in ban_words)
+        messages = [{
+            "role": "system",
+            "content": _prompt
+        }]
 
         if banned or not is_flagged(req):
             print(f"banned input:" + str(req) + ", id: " + user_id)
@@ -213,43 +202,44 @@ class BotLogic:
 
                 if msg_type is not None and not e_message:
                     # outgoing msg - bot msg
-                    history += f"[{name}]: " + text_data
+                    messages.append({
+                        "role": "assistant",
+                        "content": f"[{name}]: " + text_data
+                    })
                 else:
                     # incoming msg - user msg
-                    history += "[user]: " + text_data
+                    messages.append({
+                        "role": "user",
+                        "content": "[user]: " + text_data
+                    })
 
-                history += "\n"
-
-                if msg_type == "outgoing":
-                    history += "###\n"
-
-        history += f"[{name}]: "
+        messages.append({
+            "role": "user",
+            "content": "[user]: " + req
+        })
 
         # Max input size = 2048 tokens
         try:
-            reply = self.process_via_openai(model, history, user_id, name)
-            print(history + reply)
+            reply = self.process_via_openai(model, messages, user_id, name)
+            # print(history + reply)
             return valid, reply
         except Exception as e:
             print(f"error - {e}, for {user_id}")
             return False, "Oops, I am feeling a little overwhelmed with messages\nPlease message me later"
 
-    def process_via_openai(self, model, prompt, user_id, bot_name):
-        # todo - add a moderation check
-        # "text-davinci-003"
-
+    def process_via_openai(self, model_name, messages, user_id, bot_name):
         if openai.api_key:
-            response = openai.Completion.create(model=model, prompt=prompt, temperature=self.temp,
-                                                max_tokens=self.max_length, user=user_id)
+            response = openai.ChatCompletion.create(model=model_name, messages=messages, temperature=self.temp,
+                                                    max_tokens=self.max_length, user=user_id, timeout=10)
 
             completion = ""
 
             if response and response.choices and len(response.choices) > 0:
                 choice = response.choices[0]
-                if choice and choice.text:
-                    c = choice.text
-                    bot_str = f"{bot_name}: "
-                    completion = str.replace(c, bot_str, "")
+                if choice and choice.message and choice.message.content:
+                    _completion = choice.message.content
+                    bot_str = f"[{bot_name}]:"
+                    completion = str.replace(_completion, bot_str, "")
         else:
             completion = "Oops, Please configure your Open AI key"
 
