@@ -23,7 +23,6 @@ API_TOKEN = <Machaao API Token>
 OPENAI_API_KEY = <OpenAI Key> 
 BASE_URL = <Machaao Base Url> ex: https://ganglia.machaao.com
 NAME = <Your Bot Display Name> ex: Jess
-DASHBOT_KEY = <Your dashbot token> (Optional) (Conversational Analytics)
 ```
 
 ## Get MessengerX.io API Key ##
@@ -31,15 +30,10 @@ DASHBOT_KEY = <Your dashbot token> (Optional) (Conversational Analytics)
 * MessengerX.io allows you to build and integrate a custom chatbot in your website or app or a shareable link.
 * Create a Custom Bot and follow the setup process as listed below
 
-
 ## Get Open AI API Key ##
-* You can acquire the API Key via [Open AI](https://openai.com) and replace it in the ```.env``` file under the entry
+* You can acquire the API Key via [Open AI](https://platform.openai.com) and replace it in the ```.env``` file under the entry
 ```OPEN_AI_KEY```
-  
-## Get Dashbot.io API KEY (Recommended for Production) (Optional) ##
-* You can acquire the API Key via [Dashbot.io](https://dashbot.io) and replace it in the ```.env``` file under the entry
-```DASHBOT_KEY```
-  
+
 ## Local Setup ##
 ### Download or clone this repository ###
 ```
