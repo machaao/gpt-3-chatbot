@@ -14,6 +14,14 @@ looking to build, grow and monetize AI GPT-3 / GPT-4 chatbots on Web and Mobile.
 * OpenAI API Key
 * Ngrok for Tunneling
 
+## Local Setup ##
+### Download or clone this repository ###
+```
+git clone git@github.com:machaao/gpt-3-chatbot.git
+
+cd gpt-3-chatbot
+```
+
 ### Create a new .env file in the base directory ###
 ```bash
 nano -w .env
@@ -34,14 +42,6 @@ NAME = <Your Bot Display Name> ex: Jess
 * You can acquire the API Key via [Open AI](https://platform.openai.com) and replace it in the ```.env``` file under the entry
 ```OPEN_AI_KEY```
 
-## Local Setup ##
-### Download or clone this repository ###
-```
-git clone git@github.com:machaao/gpt-3-chatbot.git
-
-cd gpt-3-chatbot
-```
-
 
 ### Install requirements ###
 ```bash
@@ -53,6 +53,12 @@ pip install -r requirements.txt
 ```
 This is a discussion between [user] and [name]
 [name] is a very understanding girl.
+```
+
+* Example prompt after modifying logic/prompt.txt
+```
+This is a discussion between user and Jess
+Jess is a very understanding girl
 ```
 
 ### Modify the core() function in logic/bot_logic.py to modify logic ###
