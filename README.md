@@ -5,12 +5,12 @@ looking to build, grow and monetize AI GPT-3 / GPT-4 chatbots on Web and Mobile.
 ## Live Web Demo ##
 ![figure](images/img.png)
 
-[Jeanie](https://messengerx.io/jeanie) is an AI powered virtual girlfriend based on a version of the above code
+[Jeanie](https://buildgpt.ai/jeanie) is an AI powered virtual girlfriend based on a version of the above code
 
 ## Requirements for running it locally on laptop ##
 * Windows / Mac / Linux with Git installed
 * Python 3.5+
-* MessengerX.io API Token
+* buildgpt.ai API Token
 * OpenAI API Key
 * Ngrok for Tunneling
 
@@ -33,9 +33,9 @@ BASE_URL = <Machaao Base Url> ex: https://ganglia.machaao.com
 NAME = <Your Bot Display Name> ex: Jess
 ```
 
-## Get MessengerX.io API Key ##
-* Signup via [MessengerX.io](https://portal.messengerx.io) and get a free bot token and replace it in the ```.env``` file under the entry ```API_TOKEN```
-* MessengerX.io allows you to build and integrate a custom chatbot in your website or app or a shareable link.
+## Get buildgpt.ai API Key ##
+* Signup via [buildgpt.ai](https://portal.buildgpt.ai) and get a free bot token and replace it in the ```.env``` file under the entry ```API_TOKEN```
+* buildgpt.ai allows you to build and integrate a custom chatbot in your website or app or a shareable link.
 * Create a Custom Bot and follow the setup process as listed below
 
 ## Get Open AI API Key ##
@@ -78,7 +78,7 @@ ngrok http 5000
 ```
 
 ### Update your webhook ###
-Update your bot Webhook URL at [MessengerX.io Portal](https://portal.messengerx.io) 
+Update your bot Webhook URL at [buildgpt.ai Portal](https://portal.buildgpt.ai) 
 If you use [Ngrok.io](https://ngrok.io), your webhook URL would be of the format as in the example below
 ```
 https://<NGROK-HOST-URL>/machaao/hook
@@ -86,7 +86,7 @@ https://<NGROK-HOST-URL>/machaao/hook
 ![figure](images/mx_screenshot.png)
 
 ### Test your bot:
-Visit: ```https://messengerx.io/<bot-name>```
+Visit: ```https://buildgpt.ai/<bot-name>```
 
 
 ## Remote Setup (Heroku) ##
@@ -116,13 +116,13 @@ heroku logs --tail
 ```
 
 ### Update your webhook ###
-Update your bot Webhook URL at [MessengerX.io Portal](https://portal.messengerx.io) with the heroku app url
+Update your bot Webhook URL at [buildgpt.ai Portal](https://portal.buildgpt.ai) with the heroku app url
 ```
 Webhook Url: <YOUR-HEROKU-APP-URL>/machaao/hook
 ```
 
 ### Share your bot:
-Visit: ```https://messengerx.io/<your-bot-name>```
+Visit: ```https://buildgpt.ai/<your-bot-name>```
 
 
 ## Notes / Additional Resources ##
