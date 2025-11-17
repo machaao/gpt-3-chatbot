@@ -2,11 +2,6 @@
 The intent of this template is to serve as a reference guide for fellow developers 
 looking to build, grow and monetize AI GPT-3 / GPT-4 chatbots on Web and Mobile.
 
-## Live Web Demo ##
-![figure](images/img.png)
-
-[Jeanie](https://buildgpt.ai/jeanie) is an AI powered virtual girlfriend based on a version of the above code
-
 ## Requirements for running it locally on laptop ##
 * Windows / Mac / Linux with Git installed
 * Python 3.5+
